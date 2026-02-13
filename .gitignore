@@ -1,10 +1,5 @@
-# HPC outputs
 runs/
-
-# macOS
 .DS_Store
-
-# Python
 __pycache__/
 *.pyc
 .venv/
