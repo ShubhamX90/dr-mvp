@@ -1,4 +1,5 @@
 #!/bin/bash
+export BASHRCSOURCED=1
 #SBATCH -J drmvp_ddp_4gpu
 #SBATCH -p gpu_h100_4
 #SBATCH --gres=gpu:1
@@ -10,7 +11,7 @@
 #SBATCH -e runs/slurm.%j.err
 set -euo pipefail
 spack load /ku6kdpo
-source ~/.bashrc
+source "1248200074 1248200072 1248200074conda info --base)/etc/profile.d/conda.sh"
 conda activate dr-mvp
 cd $SLURM_SUBMIT_DIR
 cat > runs/ddp_smoke_${SLURM_JOB_ID}.py <<'PY'
