@@ -3,7 +3,7 @@
 #SBATCH -p gpu_h100_4
 #SBATCH --gres=gpu:4
 #SBATCH --ntasks-per-node=4
-#SBATCH -c 4
+#SBATCH -c 2
 #SBATCH --mem=128G
 #SBATCH --time=00:15:00
 #SBATCH -o runs/slurm.%j.out
