@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH -J drmvp_ddp_4gpu
 #SBATCH -p gpu_h100_4
-#SBATCH --gres=gpu:2
-#SBATCH --ntasks-per-node=2
+#SBATCH --gres=gpu:1
+#SBATCH --ntasks-per-node=1
 #SBATCH -c 2
 #SBATCH --mem=128G
 #SBATCH --time=00:15:00
@@ -28,4 +28,4 @@ if int(os.environ.get("RANK","0")) == 0:
     print("ok", u.shape, float(u.mean()))
 dist.destroy_process_group()
 PY
-torchrun --standalone --nproc_per_node=2 runs/ddp_smoke_${SLURM_JOB_ID}.py
+torchrun --standalone --nproc_per_node=1 runs/ddp_smoke_${SLURM_JOB_ID}.py
