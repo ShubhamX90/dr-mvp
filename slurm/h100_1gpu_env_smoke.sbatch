@@ -1,18 +1,22 @@
 #!/bin/bash
-export BASHRCSOURCED=1
 #SBATCH -J drmvp_env_1gpu
 #SBATCH -p gpu_h100_4
 #SBATCH --gres=gpu:1
-#SBATCH -c 8
+#SBATCH -c 2
 #SBATCH --mem=32G
 #SBATCH --time=00:10:00
 #SBATCH -o runs/slurm.%j.out
 #SBATCH -e runs/slurm.%j.err
+
 set -euo pipefail
+export BASHRCSOURCED=1
+
 spack load /ku6kdpo
-source "1248200074 1248200072 1248200074conda info --base)/etc/profile.d/conda.sh"
+source "$(conda info --base)/etc/profile.d/conda.sh"
 conda activate dr-mvp
-cd $SLURM_SUBMIT_DIR
+
+cd "$SLURM_SUBMIT_DIR"
+
 python - <<'PY'
 import torch
 print("cuda_available", torch.cuda.is_available())
